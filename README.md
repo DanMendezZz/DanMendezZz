@@ -93,25 +93,19 @@
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=DanMendezZz&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Daniel's GitHub stats" />
 <img height="165" src="https://streak-stats.demolab.com?user=DanMendezZz&theme=tokyonight&hide_border=true" alt="Daniel's GitHub streak" />
 
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=DanMendezZz&layout=compact&theme=tokyonight&hide_border=true" alt="Daniel's top languages" />
-
 </div>
 
-<div align="center">
-
-![Trophies](https://github-profile-trophy.vercel.app/?username=DanMendezZz&theme=tokyonight&no-frame=true&row=1&column=6)
-
-</div>
+<!-- Las tarjetas de github-readme-stats.vercel.app y github-profile-trophy.vercel.app se
+     quitaron temporalmente: sus despliegues públicos gratuitos están caídos (503/402) por
+     cuota de Vercel, algo externo y periódico en esos proyectos. Se restauran cuando el
+     servicio vuelva. -->
 
 ## 📌 Featured Repositories
 
 - **[Estadistica_Ambiental](https://github.com/DanMendezZz/Estadistica_Ambiental)** — Collection of statistical/ML models with an environmental focus in Colombia (Python).
 - **[Estadistica_Ambiental_Dashboard](https://github.com/DanMendezZz/Estadistica_Ambiental_Dashboard)** — Streamlit dashboard consuming the package above, published on PyPI (Python).
-- **[Series-de-tiempo](https://github.com/DanMendezZz/Series-de-tiempo)** — Time series analysis notebooks and resources.
-- **[UPJ](https://github.com/DanMendezZz/UPJ)** — Academic/personal repository (Pontificia Universidad Javeriana).
 
 <div align="center">
 
