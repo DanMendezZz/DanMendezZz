@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=Daniel%20Felipe%20Acosta%20Mendez&fontSize=38&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Data%20Scientist%20%7C%20Data%20Engineer&descAlignY=58&descSize=20" width="100%"/>
+<img src="assets/banner.jpg" width="100%"/>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-danielm--datascientist-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/danielm-datascientist/)
 [![Gmail](https://img.shields.io/badge/Email-danielmendez19960%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:danielmendez19960@gmail.com)
