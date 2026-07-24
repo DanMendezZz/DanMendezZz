@@ -6,6 +6,8 @@
 [![Gmail](https://img.shields.io/badge/Email-danielmendez19960%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:danielmendez19960@gmail.com)
 ![Location](https://img.shields.io/badge/Bogot%C3%A1-Colombia-2E7D32?style=for-the-badge&logo=googlemaps&logoColor=white)
 
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=DanMendezZz&theme=tokyo-night&hide_border=true" alt="Daniel's commit activity graph" />
+
 </div>
 
 <p align="center">
@@ -228,12 +230,6 @@ Pipeline de 5 etapas (preprocesamiento → EDA → modelado → interpretabilida
 <img height="165" src="https://streak-stats.demolab.com?user=DanMendezZz&theme=tokyonight&hide_border=true" alt="Daniel's GitHub streak" />
 
 <img height="165" src="https://github-readme-stats-three-flax-qzdqomtzwi.vercel.app/api/top-langs/?username=DanMendezZz&layout=compact&theme=tokyonight&hide_border=true" alt="Daniel's top languages" />
-
-</div>
-
-<div align="center">
-
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=DanMendezZz&theme=tokyo-night&hide_border=true" alt="Daniel's commit activity graph" />
 
 </div>
 
