@@ -48,7 +48,7 @@
 
 ## 📌 Proyectos destacados
 
-Una mezcla de **repos públicos** (código abierto, con CI/tests/documentación) y **proyectos profesionales** desarrollados para entidades del sector ambiental colombiano. Los detalles de clientes/contratos se omiten deliberadamente; lo que sigue es el problema técnico, la arquitectura y el resultado.
+Una mezcla de un **repo público** (código abierto, con CI/tests/documentación) y **proyectos profesionales** desarrollados para entidades del sector ambiental colombiano. Los detalles de clientes/contratos se omiten deliberadamente; lo que sigue es el problema técnico, la arquitectura y el resultado.
 
 ### 📦 [`Estadistica_Ambiental`](https://github.com/DanMendezZz/Estadistica_Ambiental) — librería de ciencia de datos ambiental (PyPI)
 
@@ -62,10 +62,6 @@ Base de conocimiento + librería reutilizable (`pip install estadistica-ambienta
 - 639 tests, ~80% cobertura, CI en Linux + Windows, documentación auto-publicada (mkdocs-material) y notebooks navegables **sin instalar nada** vía JupyterLite/Pyodide.
 - 19 ADRs documentando decisiones metodológicas (por qué ADF+KPSS obligatorio antes de ARIMA, por qué los outliers ambientales se tratan como señal real y no se descartan, lag hidrológico de ENSO por ecosistema, etc.).
 - Validado sobre datos reales: el módulo de calidad del aire alcanzó **RMSE 3.72 µg/m³ y HitRate ICA 88.6%** sobre series horarias de PM2.5, replicado de forma independiente en el proyecto hermano de pronóstico de calidad del aire (ver más abajo).
-
-### 📊 [`Estadistica_Ambiental_Dashboard`](https://github.com/DanMendezZz/Estadistica_Ambiental_Dashboard) — dashboard satélite (Streamlit Cloud)
-
-Demo pública desplegada en Streamlit Community Cloud que consume la librería anterior **solo como dependencia** (sin reimplementar lógica): calidad de datos → descriptiva → tendencia (Mann-Kendall) → reporte de excedencias normativas, sobre PM2.5 horario. Ilustra el patrón "librería base + apps satélite" que uso para separar investigación reutilizable de productos de cliente.
 
 ### 🏭 Motor de automatización documental por reglas (consultoría — programa de fortalecimiento empresarial)
 
@@ -216,7 +212,7 @@ Pipeline de 5 etapas (preprocesamiento → EDA → modelado → interpretabilida
 | Dashboards autocontenibles | Leaflet, Chart.js, Plotly, HTML/JSON embebido, R Markdown | Tablero de control multi-empresa; mapa GEI offline; reportes ejecutivos SISAIRE |
 | Ingeniería en la nube | GitHub Actions, Microsoft Graph API (MSAL, app-only), reintentos/idempotencia | Migración de jobs locales a la nube, patrón reutilizable documentado |
 | Procesamiento geoespacial | GeoPandas, Shapely, Pyproj, reproyección de coordenadas, simplificación de geometrías | Mapa de iniciativas GEI; cartografía SISAIRE (municipios/localidades) |
-| BI / reporting | Power BI, Streamlit, ETL a medida | Reportes RENARE, dashboards Streamlit satélite, ETL/BI para seguimiento de impacto |
+| BI / reporting | Power BI, Streamlit, ETL a medida | Reportes RENARE, dashboards Streamlit, ETL/BI para seguimiento de impacto |
 
 ---
 
