@@ -16,14 +16,14 @@
   <a href="#-github-stats">GitHub Stats</a>
 </p>
 
-## 👋 About Me
+## 👋 Sobre mí
 
-- 🔭 Currently working as **Data Analyst** at the **Ministerio de Ambiente y Desarrollo Sostenible (Colombia)**, administering the RENARE platform and building Machine Learning models for climate intelligence that feed Colombia's Biennial Transparency Report (BTR) and NDC follow-up.
-- 🌱 Currently deepening my skills in **cloud architectures (AWS & Google Cloud Platform), Data Lakes, and Generative AI (LLMs)** applied to environmental and climate data.
-- 💼 **M.Sc. in Data Science** (Pontificia Universidad Javeriana) and **Environmental Engineer**, with hands-on experience in predictive modeling, ETL pipelines, MRV, carbon markets, air quality monitoring, and data-driven decision support. Recent work includes data analytics & document-automation consulting (9Alliance), environmental data integration and ML forecasting for territorial planning (CAR Cundinamarca), and ETL/BI reporting for NGO impact tracking (Solidaridad).
-- 🚀 **Featured projects:** a GHG emission-factor predictive model (Master's thesis, endorsed by MinAmbiente), a PM2.5 air-quality forecasting system for the SISAIRE network at CAR Cundinamarca, and a rules-based document-automation engine that produces 250+ technical reports without any LLM/API call.
-- 🧩 I like turning messy, manual, spreadsheet-driven processes into **reproducible pipelines** — whether that's a statistical/ML model, a self-contained HTML dashboard, or a cloud job that used to run on someone's laptop.
-- 📫 **Reach me:** [LinkedIn](https://www.linkedin.com/in/danielm-datascientist/) · danielmendez19960@gmail.com
+- 🔭 Actualmente trabajo como **Analista de Datos** en el **Ministerio de Ambiente y Desarrollo Sostenible (Colombia)**, administrando la plataforma RENARE y construyendo modelos de Machine Learning de inteligencia climática que alimentan el Informe Bienal de Transparencia (BTR) de Colombia y el seguimiento de la NDC.
+- 🌱 Actualmente profundizando en **arquitecturas en la nube (AWS y Google Cloud Platform), Data Lakes e IA Generativa (LLMs)** aplicadas a datos ambientales y climáticos.
+- 💼 **M.Sc. en Ciencia de Datos** (Pontificia Universidad Javeriana) e **Ingeniero Ambiental**, con experiencia práctica en modelado predictivo, pipelines ETL, MRV, mercados de carbono, monitoreo de calidad del aire y soporte a la toma de decisiones basada en datos. El trabajo reciente incluye consultoría de analítica de datos y automatización documental (9Alliance), integración de datos ambientales y pronóstico con ML para planificación territorial (CAR Cundinamarca), y reportería ETL/BI para seguimiento de impacto de ONG (Solidaridad).
+- 🚀 **Proyectos destacados:** un modelo predictivo de factor de emisión de GEI (tesis de maestría, avalada por MinAmbiente), un sistema de pronóstico de calidad del aire PM2.5 para la red SISAIRE en CAR Cundinamarca, y un motor de automatización documental basado en reglas que produce más de 250 informes técnicos sin ninguna llamada a LLM/API.
+- 🧩 Me gusta convertir procesos manuales y desordenados basados en hojas de cálculo en **pipelines reproducibles**: ya sea un modelo estadístico/ML, un tablero HTML autocontenible o un job en la nube que antes corría en el computador de alguien.
+- 📫 **Contáctame:** [LinkedIn](https://www.linkedin.com/in/danielm-datascientist/) · danielmendez19960@gmail.com
 
 <details>
 <summary>🧭 <b>Professional journey</b> (click to expand)</summary>
@@ -62,49 +62,6 @@ Base de conocimiento + librería reutilizable (`pip install estadistica-ambienta
 - 639 tests, ~80% cobertura, CI en Linux + Windows, documentación auto-publicada (mkdocs-material) y notebooks navegables **sin instalar nada** vía JupyterLite/Pyodide.
 - 19 ADRs documentando decisiones metodológicas (por qué ADF+KPSS obligatorio antes de ARIMA, por qué los outliers ambientales se tratan como señal real y no se descartan, lag hidrológico de ENSO por ecosistema, etc.).
 - Validado sobre datos reales: el módulo de calidad del aire alcanzó **RMSE 3.72 µg/m³ y HitRate ICA 88.6%** sobre series horarias de PM2.5, replicado de forma independiente en el proyecto hermano de pronóstico de calidad del aire (ver más abajo).
-
-### 🏭 Motor de automatización documental por reglas (consultoría — programa de fortalecimiento empresarial)
-
-Pipeline que genera, para cada empresa participante de un programa de fortalecimiento empresarial con enfoque en economía circular, un **informe técnico de diagnóstico en Word** a partir de un formulario de autodiagnóstico — sin ninguna llamada a LLM/API: puntuación + clasificación de madurez, gráfica radial y **texto narrativo generado por un motor de reglas determinista** (normalización de voz a 3ª persona, límites de repetición, ajuste de contenido según la clasificación obtenida).
-
-```mermaid
-flowchart LR
-    A["Formulario de\nautodiagnóstico"] --> B["Evaluación\n7 secciones + puntaje"]
-    B --> C["Gráfica radial\n(0-3)"]
-    B --> D["Motor de texto\npor reglas (sin LLM)"]
-    C --> E["Ensamblado\n+ saneo tipográfico"]
-    D --> E
-    E --> F["Word final\npor empresa"]
-    F --> G["QA automático\n(auditoría de calidad)"]
-```
-
-- **+270 documentos generados en lote**, 0 errores en la auditoría automática de calidad (detección de placeholders, resaltados residuales, lenguaje en 1ª persona, puntuación, mayúsculas fugadas).
-- Motor de reglas 100% determinista y auditable: mismo input → mismo output, sin riesgo de alucinación ni de exponer datos a un proveedor externo.
-- Capa de "limpieza tipográfica" que normaliza texto libre de formulario (MAYÚSCULAS, tildes rotas, palabras duplicadas) contra un maestro de razón social, sin intervención manual.
-
-### 🗺️ Tablero de control + modelo de asignación de visitas (consultoría — mismo programa)
-
-Tablero HTML autocontenible (Chart.js + Leaflet, sin backend) que unifica **cientos de empresas** en un solo panel: KPIs, correlaciones, ficha 360° por empresa y planeación geográfica de visitas de campo. Incluye un **modelo de asignación** que empareja profesional↔empresa↔horario por cercanía (fórmula de Haversine) respetando disponibilidad declarada por día, con balanceo de carga entre el equipo — y expone cada ruta diaria con un enlace directo a Google Maps.
-
-### ☁️ Migración de automatizaciones locales a la nube (GitHub Actions + Microsoft Graph API)
-
-Diseño y documentación de un patrón reutilizable para migrar jobs que corrían en el Programador de tareas de un PC (leyendo/escribiendo Excel en SharePoint/OneDrive) a **GitHub Actions con autenticación app-only vía Microsoft Graph** — eliminando la dependencia de un equipo encendido y el riesgo de archivos en conflicto porque el equipo los tenía abiertos.
-
-```mermaid
-flowchart LR
-    subgraph Antes
-    T["Task Scheduler\n(PC encendido)"] -->|lee/escribe| X1["Excel en\nOneDrive/SharePoint"]
-    end
-    subgraph Después
-    GA["GitHub Actions\n(cron / on-demand)"] -->|MSAL app-only| MG["Microsoft Graph API"]
-    MG --> X2["Excel en\nOneDrive/SharePoint"]
-    GA --> LOG["Bitácora JSON\n(en el propio SharePoint)"]
-    end
-```
-
-- Capa de I/O reutilizable con reintentos ante *rate-limiting* de Graph (429/5xx) y una distinción explícita entre "archivo no existe" (404) y error transitorio — evita sobrescrituras accidentales de datos reales.
-- Validación **byte a byte** del job migrado contra el job local antes de apagar el original; bitácora de ejecución persistida en la nube (no en el runner efímero).
-- Playbook documentado para que el mismo patrón se replique en cualquier otro proceso del mismo tipo.
 
 ### 🌫️ Sistema de pronóstico de calidad del aire (consultoría — autoridad ambiental regional)
 
