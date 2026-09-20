@@ -94,7 +94,7 @@ Pipeline de 5 etapas (preprocesamiento → EDA → modelado → interpretabilida
 
 ---
 
-## 🛠️ Tech Stack
+## 🧰 Tech Stack
 
 **Languages**
 
