@@ -18,11 +18,12 @@
 
 ## 👋 Sobre mí
 
-- 🔭 Actualmente trabajo como **Analista de Datos** en el **Ministerio de Ambiente y Desarrollo Sostenible (Colombia)**, administrando la plataforma RENARE y construyendo modelos de Machine Learning de inteligencia climática que alimentan el Informe Bienal de Transparencia (BTR) de Colombia y el seguimiento de la NDC.
-- 🌱 Actualmente profundizando en **arquitecturas en la nube (AWS y Google Cloud Platform), Data Lakes e IA Generativa (LLMs)** aplicadas a datos ambientales y climáticos.
-- 💼 **M.Sc. en Ciencia de Datos** (Pontificia Universidad Javeriana) e **Ingeniero Ambiental**, con experiencia práctica en modelado predictivo, pipelines ETL, MRV, mercados de carbono, monitoreo de calidad del aire y soporte a la toma de decisiones basada en datos. El trabajo reciente incluye consultoría de analítica de datos y automatización documental (9Alliance), integración de datos ambientales y pronóstico con ML para planificación territorial (CAR Cundinamarca), y reportería ETL/BI para seguimiento de impacto de ONG (Solidaridad).
-- 🚀 **Proyectos destacados:** un modelo predictivo de factor de emisión de GEI (tesis de maestría, avalada por MinAmbiente), un sistema de pronóstico de calidad del aire PM2.5 para la red SISAIRE en CAR Cundinamarca, y un motor de automatización documental basado en reglas que produce más de 300 informes técnicos sin ninguna llamada a LLM/API.
-- 🧩 Me gusta convertir procesos manuales y desordenados basados en hojas de cálculo en **pipelines reproducibles**: ya sea un modelo estadístico/ML, un tablero HTML autocontenible o un job en la nube que antes corría en el computador de alguien.
+- 📊 Soy Magíster en Ciencia de Datos, Especialista en Dirección y Gestión de Proyectos TI e Ingeniero Ambiental, apasionado por transformar datos complejos en información estratégica que apoye la toma de decisiones y genere impacto en sostenibilidad, cambio climático y gestión ambiental.
+- 💡 He desarrollado soluciones de analítica de datos, Machine Learning, procesos ETL, automatización de flujos de información e ingeniería de datos, aplicadas a iniciativas de mitigación del cambio climático, MRV, mercados de carbono, calidad del aire, ordenamiento territorial y sistemas de información ambiental.
+- 🌱 Mi experiencia integra el conocimiento ambiental con la ciencia de datos para diseñar modelos predictivos, optimizar procesos y fortalecer la gobernanza de la información mediante estándares de calidad, trazabilidad, interoperabilidad y seguridad.
+- ☁️ También cuento con experiencia en arquitecturas de datos en la nube, trabajando con AWS (Glue, Athena, Amazon S3) y Google Cloud Platform (BigQuery y Google Earth Engine), además de Data Lakes, Big Data, analítica geoespacial, visualización de datos e Inteligencia Artificial Generativa (LLMs).
+- 🌍 Actualmente enfoco mi trabajo en el desarrollo de soluciones que contribuyen a la transparencia climática, fortaleciendo procesos relacionados con la CMNUCC, el Informe Bienal de Transparencia (BTR) y el seguimiento de la NDC de Colombia, mediante el uso de datos, analítica avanzada e inteligencia climática.
+- 🚀 Me motiva participar en proyectos donde la ciencia de datos, la ingeniería de datos y la inteligencia artificial se conviertan en herramientas para resolver retos ambientales, impulsar la innovación y generar valor para las organizaciones y la sociedad.
 - 📫 **Contáctame:** [LinkedIn](https://www.linkedin.com/in/danielm-datascientist/) · danielmendez19960@gmail.com
 
 <details>
