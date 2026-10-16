@@ -85,6 +85,7 @@ flowchart LR
 
 - **+300 documentos generados en lote**, 0 errores en la auditoría automática de calidad (detección de placeholders, resaltados residuales, lenguaje en 1ª persona, puntuación, mayúsculas fugadas).
 - Motor de reglas 100% determinista y auditable: mismo input → mismo output, sin riesgo de alucinación ni de exponer datos a un proveedor externo.
+- Flujo **separado** de **actas asistido por agente LLM** (fuera del motor de informes, que sigue sin LLM ni proveedores externos), con compuertas de control: solo se genera con los insumos completos, tiene tope de reintentos y revisión visual del PDF resultante.
 - Capa de "limpieza tipográfica" que normaliza texto libre de formulario (MAYÚSCULAS, tildes rotas, palabras duplicadas) contra un maestro de razón social, sin intervención manual.
 
 ### 🗺️ Tablero de control + modelo de asignación de visitas (consultoría, mismo programa)
@@ -109,13 +110,33 @@ flowchart LR
 
 - Capa de I/O reutilizable con reintentos ante *rate-limiting* de Graph (429/5xx) y una distinción explícita entre "archivo no existe" (404) y error transitorio, lo que evita sobrescrituras accidentales de datos reales.
 - Validación **byte a byte** del job migrado contra el job local antes de apagar el original; bitácora de ejecución persistida en la nube (no en el runner efímero).
+- Ejecución **incremental e idempotente** (hash por fila, publicación documento por documento, presupuesto de minutos de Actions) y guardias contra corridas "verdes pero inútiles": topes de archivos retirados o degradados que abortan la ejecución y una guardia de regresión frente a la corrida anterior.
 - Playbook documentado para que el mismo patrón se replique en cualquier otro proceso del mismo tipo.
+
+### 🌐 Portal privado de tableros en Google Cloud (consultoría, autoridad ambiental regional)
+
+Aplicación web full-stack, en producción, que reemplaza el envío de tableros por correo: cada área de la entidad entra con su usuario y ve únicamente sus tableros (calidad del aire, áreas protegidas, vulnerabilidad climática, población, seguimiento contractual), con resumen ejecutivo, mapa coroplético por municipio y alertas.
+
+```mermaid
+flowchart LR
+    U["Usuario<br>(rol por área)"] --> P["Next.js 16 + React 19<br>(Cloud Run)"]
+    P --> DB[("PostgreSQL<br>(Cloud SQL)")]
+    P -->|"proxy autenticado<br>con streaming"| B["Cloud Storage<br>(bucket privado)"]
+    E["Orquestador ETL<br>extraer, validar, publicar"] --> B
+    E --> DB
+    GH["GitHub Actions<br>(Workload Identity)"] --> P
+```
+
+- **Seguridad por defecto:** contraseñas con Argon2id, sesiones opacas y revocables guardadas en base de datos, bloqueo por intentos fallidos, *rate limit*, auditoría de accesos, CSP con *nonce* por solicitud y lista de rutas permitidas en el middleware/proxy de la aplicación.
+- **CI/CD sin llaves:** despliegue desde GitHub Actions con Workload Identity Federation (sin JSON de credenciales), secretos en Secret Manager, imágenes en Artifact Registry y detección de secretos (gitleaks) en cada cambio.
+- **Publicación segura de datos:** el orquestador ETL valida cada conjunto de datos antes de publicar, tiene modo simulación con diff, nunca borra lo ya publicado y conserva la generación anterior. Los indicadores llevan fecha de corte y estado explícito ("sin dato" con motivo) en vez de inventar valores, y el cruce de nombres de municipios contra la codificación oficial DIVIPOLA (DANE) falla de forma explícita cuando no hay coincidencia.
 
 ### 🌫️ Sistema de pronóstico de calidad del aire (consultoría, autoridad ambiental regional)
 
 Pipeline ML de extremo a extremo sobre la red oficial de monitoreo de calidad del aire (PM2.5 horario, 2016–2026, 32 estaciones activas tras control de calidad): ETL con detección de outliers espacio-temporalmente confirmados, imputación sin fuga de información (interpolación + KNN), ingeniería de variables (lags, rolling, componentes cíclicos, índice climático ENSO/ONI), y comparación de **SARIMA, Random Forest, XGBoost, LightGBM y LSTM/BiLSTM** con optimización bayesiana de hiperparámetros (Optuna) y *backtesting* walk-forward.
 
 - Reportes ejecutivos **autocontenidos** (HTML/R Markdown, un solo archivo, sin dependencias externas) con mapa interactivo del índice de calidad del aire y semáforo de cumplimiento normativo (Res. 2254/2017).
+- **En producción:** modelos por estación (conjunto de Random Forest, XGBoost y LightGBM, con corrección AR(1) sobre residuos), reentrenamiento trimestral programado y chequeo automático de anomalías; el mismo esquema opera también para PM10.
 - Además de este pipeline, construí un **framework de generación de dashboards** reutilizado en distintas áreas funcionales de la entidad (áreas protegidas, cambio climático, seguimiento de metas): mismo patrón ETL → validación → KPIs → tablero, con distintas fuentes de datos.
 
 <p align="center">
@@ -149,51 +170,107 @@ Pipeline de 5 etapas (preprocesamiento → EDA → modelado → interpretabilida
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
 **Ciencia de Datos y Machine Learning**
 
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![statsmodels](https://img.shields.io/badge/statsmodels-3776AB?style=for-the-badge)
 ![XGBoost](https://img.shields.io/badge/XGBoost-EB0028?style=for-the-badge)
 ![LightGBM](https://img.shields.io/badge/LightGBM-02569B?style=for-the-badge)
-![Statsmodels](https://img.shields.io/badge/Statsmodels-3776AB?style=for-the-badge)
+![CatBoost](https://img.shields.io/badge/CatBoost-FFCC00?style=for-the-badge)
 ![Optuna](https://img.shields.io/badge/Optuna-0078D4?style=for-the-badge)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![SHAP](https://img.shields.io/badge/SHAP-FF0051?style=for-the-badge)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Jupyter Notebooks](https://img.shields.io/badge/Jupyter_Notebooks-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
-**Nube e Ingeniería de Datos**
+**Big Data**
 
-![AWS](https://img.shields.io/badge/AWS_(Glue·Athena·S3)-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
-![Google Cloud](https://img.shields.io/badge/BigQuery-4285F4?style=for-the-badge&logo=googlebigquery&logoColor=white)
-![Google Earth Engine](https://img.shields.io/badge/Google_Earth_Engine-4285F4?style=for-the-badge&logo=googleearth&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Microsoft Graph](https://img.shields.io/badge/Microsoft_Graph_API-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Apache Spark](https://img.shields.io/badge/Apache_Spark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
+![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
 
-**Bases de datos**
+**Visión y procesamiento de documentos**
 
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-
-**Geoespacial**
-
-![GeoPandas](https://img.shields.io/badge/GeoPandas-139C5A?style=for-the-badge)
-![QGIS](https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white)
-![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white)
+![Tesseract](https://img.shields.io/badge/Tesseract-5C5C5C?style=for-the-badge)
+![PyTesseract](https://img.shields.io/badge/PyTesseract-5C5C5C?style=for-the-badge)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
+![pdfplumber](https://img.shields.io/badge/pdfplumber-B22222?style=for-the-badge)
+![PyMuPDF](https://img.shields.io/badge/PyMuPDF-B22222?style=for-the-badge)
+![python-docx](https://img.shields.io/badge/python--docx-2B579A?style=for-the-badge)
 
 **BI y Visualización**
 
 ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Power Query](https://img.shields.io/badge/Power_Query-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Power Pivot](https://img.shields.io/badge/Power_Pivot-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white)
+![Looker](https://img.shields.io/badge/Looker-4285F4?style=for-the-badge&logo=looker&logoColor=white)
+![Looker Studio](https://img.shields.io/badge/Looker_Studio-4285F4?style=for-the-badge&logo=looker&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
-![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![RStudio](https://img.shields.io/badge/RStudio-75AADB?style=for-the-badge&logo=rstudio&logoColor=white)
 ![R Markdown](https://img.shields.io/badge/R_Markdown-75AADB?style=for-the-badge)
 
-**Herramientas y Colaboración**
+**AWS**
 
+![AWS Glue](https://img.shields.io/badge/AWS_Glue-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![AWS Athena](https://img.shields.io/badge/AWS_Athena-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Amazon S3](https://img.shields.io/badge/Amazon_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white)
+![Amazon Redshift](https://img.shields.io/badge/Amazon_Redshift-8C4FFF?style=for-the-badge&logo=amazonredshift&logoColor=white)
+
+**Google Cloud Platform**
+
+![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=for-the-badge&logo=googlebigquery&logoColor=white)
+![Google Earth Engine](https://img.shields.io/badge/Google_Earth_Engine-4285F4?style=for-the-badge&logo=googleearth&logoColor=white)
+![Cloud Run](https://img.shields.io/badge/Cloud_Run-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Cloud SQL](https://img.shields.io/badge/Cloud_SQL-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Cloud Storage](https://img.shields.io/badge/Cloud_Storage-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Secret Manager](https://img.shields.io/badge/Secret_Manager-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Artifact Registry](https://img.shields.io/badge/Artifact_Registry-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+
+**Desarrollo web y APIs**
+
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
+**Bases de datos**
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
+**Geoespacial**
+
+![ArcGIS](https://img.shields.io/badge/ArcGIS-000000?style=for-the-badge)
+![QGIS](https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white)
+![GeoPandas](https://img.shields.io/badge/GeoPandas-139C5A?style=for-the-badge)
+![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white)
+
+**DevOps y Automatización**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![Microsoft Graph API](https://img.shields.io/badge/Microsoft_Graph_API-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+
+**Gestión de proyectos y procesos**
+
+![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white)
+![Confluence](https://img.shields.io/badge/Confluence-172B4D?style=for-the-badge&logo=confluence&logoColor=white)
+![Microsoft Project](https://img.shields.io/badge/Microsoft_Project-31752F?style=for-the-badge)
+![Monday](https://img.shields.io/badge/Monday-FF3D57?style=for-the-badge&logo=mondaydotcom&logoColor=white)
+![Bizagi](https://img.shields.io/badge/Bizagi-1F3F78?style=for-the-badge)
+
+---
 
 ## 🎯 Skills: dónde los aplico
 
