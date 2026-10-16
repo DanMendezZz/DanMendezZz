@@ -19,32 +19,6 @@
   <a href="#-github-stats">GitHub Stats</a>
 </p>
 
-## 🔎 Perfil en una vista
-
-| Dominio | Qué aporto | Evidencia en este perfil |
-|---|---|---|
-| 🌍 **Ambiental y climático** | Registro nacional de **iniciativas de mitigación de GEI** (REDD+, MDL, MDL PoA, PBDC, NAMA), **créditos de carbono** y mercado voluntario, MRV, calidad del aire, vulnerabilidad climática, áreas protegidas | Registro de iniciativas de mitigación, pronóstico de calidad del aire, tableros territoriales |
-| ⚖️ **Política y normativa** | Participación en la **modificación de la Resolución 1447 de 2018** y de la resolución del **componente de salvaguardas ambientales y sociales**; protocolos, guías y circulares del registro; normativa de calidad del aire llevada a operación; aportes a un plan de descontaminación; atención de PQR | Registro de iniciativas, plan de descontaminación del aire, librería `Estadistica_Ambiental` |
-| 🤝 **Impacto social y territorial** | Programas de emprendimiento rural de mujeres y de economía circular para MiPymes, población y vulnerabilidad municipal, devolución de datos a productores | Programas sociales y de economía circular, tableros territoriales |
-| 🏦 **Banca y finanzas** | Experiencia en el sector bancario; habilidades en presupuesto y compras, seguimiento contractual, mercado de carbono y control interno | [Banca y finanzas](#-banca-y-finanzas) |
-| 🛠️ **Ingeniería de datos** | ETL, pipelines idempotentes, nube (Google Cloud y AWS), CI/CD, calidad y trazabilidad de datos | Portal en Google Cloud, migración a la nube, gestión del conocimiento |
-| 📈 **Ciencia de datos e IA** | Series de tiempo, ML interpretable, validación rigurosa, bases de conocimiento y consulta con LLM/RAG | Tesis de maestría, pronóstico PM2.5, librería con más de 700 pruebas |
-
-### 🌐 English summary
-
-**Data scientist and environmental engineer (M.Sc. in Data Science)** working at the intersection of climate, sustainability and data. I build reproducible, traceable data systems: forecasting and ML models, ETL pipelines, knowledge bases, and secure dashboards in production on Google Cloud.
-
-- **Environmental & climate:** administered RENARE, Colombia's national registry of GHG mitigation initiatives (REDD+, CDM, CDM PoA, PBDC, NAMA), at the Ministry of Environment (2024 to 2026): initiative lifecycle and phase changes, REDD+ design-document review, carbon-credit data quality and voluntary carbon market analysis; ML models on registry data supporting BTR and NDC follow-up processes.
-- **Policy & regulation:** contributed to the amendment of Resolution 1447 (2018) and of the resolution on the environmental and social safeguards component; applied registry protocols, technical guides and circulars; operationalized air-quality standards (Res. 2254/2017) into forecasts and alert levels; encoded key air, drinking-water and wastewater standards (Res. 2254/2017, 2115/2007, 631/2015) as tested code in an open-source PyPI library (`estadistica-ambiental`); drafted a component of an air-pollution abatement plan for a rural area declared a pollution source area.
-- **Social impact:** data and automation for a rural women's entrepreneurship program and a circular-economy program for 300+ SMEs; data return to farmers.
-- **Data engineering:** idempotent pipelines, Microsoft Graph and GitHub Actions automation, a private role-based dashboard portal on Google Cloud Run / Cloud SQL, AWS (Glue, Athena, S3) and BigQuery.
-- **Data science & AI:** PM2.5 forecasting across 32 stations (SARIMA, tree ensembles, LSTM), an interpretable GHG emission-factor model (SHAP/LIME), and knowledge bases built for traceability and LLM/RAG querying.
-- **Banking & finance:** data requirements, quality and conformance testing at Banco de Bogotá via NTT DATA (DAMA, SQL/Oracle, DataStage, Control-M, J-SOX); budgeting and procurement automation, contract-monitoring dashboards, and reconciliation of issued and retired carbon-credit volumes. See the "Banca y finanzas" section.
-
-Projects below are described in Spanish; project-level client details are deliberately omitted. Contact: see the badges above.
-
----
-
 ## 👋 Sobre mí
 
 - 📊 Soy Magíster en Ciencia de Datos, Especialista en Dirección y Gestión de Proyectos TI e Ingeniero Ambiental, apasionado por transformar datos complejos en información estratégica que apoye la toma de decisiones y genere impacto en sostenibilidad, cambio climático y gestión ambiental.
@@ -75,6 +49,32 @@ Projects below are described in Spanish; project-level client details are delibe
 **Certificaciones:** Scrum Master, Product Owner, Team Developer, Design Thinking y Lean Six Sigma Fundamentos (Certiprof, 2023) · J-SOX (Banco de Bogotá, 2023)
 
 </details>
+
+---
+
+## 🔎 Perfil en una vista
+
+| Dominio | Experiencia y habilidades |
+|---|---|
+| 🌍 **Ambiental y climático** | Gestión de iniciativas y registros de mitigación del cambio climático · mercado de carbono y monitoreo, reporte y verificación · calidad del aire · vulnerabilidad y adaptación climática · áreas protegidas y recurso hídrico |
+| ⚖️ **Política y normativa** | Participación en procesos de modificación y desarrollo de normativa colombiana (resoluciones y decretos) · salvaguardas ambientales y sociales · protocolos, guías y lineamientos técnicos · de la norma al dato: indicadores y alertas basados en regulación |
+| 🤝 **Impacto social y territorial** | Programas de emprendimiento y economía circular · análisis poblacional y territorial · enfoque diferencial · devolución de datos a las comunidades · trazabilidad para interventoría |
+| 🏦 **Banca y finanzas** | Experiencia en el sector bancario · calidad y gobierno de datos financieros · presupuesto, compras y seguimiento contractual · control interno |
+| 🛠️ **Ingeniería de datos** | ETL y pipelines · nube (Google Cloud y AWS) · CI/CD y seguridad · calidad, trazabilidad y gobernanza de datos |
+| 📈 **Ciencia de datos e IA** | Modelado predictivo y series de tiempo · ML interpretable · bases de conocimiento y consulta con IA generativa · validación y pruebas |
+
+### 🌐 English summary
+
+**Data scientist and environmental engineer (M.Sc. in Data Science)** working at the intersection of climate, sustainability and data. I build reproducible, traceable data systems: forecasting and ML models, ETL pipelines, knowledge bases, and secure dashboards in production on Google Cloud.
+
+- **Environmental & climate:** administered RENARE, Colombia's national registry of GHG mitigation initiatives (REDD+, CDM, CDM PoA, PBDC, NAMA), at the Ministry of Environment (2024 to 2026): initiative lifecycle and phase changes, REDD+ design-document review, carbon-credit data quality and voluntary carbon market analysis; ML models on registry data supporting BTR and NDC follow-up processes.
+- **Policy & regulation:** contributed to the amendment and development of Colombian environmental regulations (resolutions), including the environmental and social safeguards component; applied registry protocols, technical guides and circulars; operationalized air-quality standards (Res. 2254/2017) into forecasts and alert levels; encoded key air, drinking-water and wastewater standards (Res. 2254/2017, 2115/2007, 631/2015) as tested code in an open-source PyPI library (`estadistica-ambiental`); drafted a component of an air-pollution abatement plan for a rural area declared a pollution source area.
+- **Social impact:** data and automation for a rural women's entrepreneurship program and a circular-economy program for 300+ SMEs; data return to farmers.
+- **Data engineering:** idempotent pipelines, Microsoft Graph and GitHub Actions automation, a private role-based dashboard portal on Google Cloud Run / Cloud SQL, AWS (Glue, Athena, S3) and BigQuery.
+- **Data science & AI:** PM2.5 forecasting across 32 stations (SARIMA, tree ensembles, LSTM), an interpretable GHG emission-factor model (SHAP/LIME), and knowledge bases built for traceability and LLM/RAG querying.
+- **Banking & finance:** data requirements, quality and conformance testing at Banco de Bogotá via NTT DATA (DAMA, SQL/Oracle, DataStage, Control-M, J-SOX); budgeting and procurement automation, contract-monitoring dashboards, and reconciliation of issued and retired carbon-credit volumes. See the "Banca y finanzas" section.
+
+Projects below are described in Spanish; project-level client details are deliberately omitted. Contact: see the badges above.
 
 ---
 
@@ -301,10 +301,6 @@ Pipeline de 5 etapas (preprocesamiento → EDA → modelado → interpretabilida
 ![Secret Manager](https://img.shields.io/badge/Secret_Manager-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 ![Artifact Registry](https://img.shields.io/badge/Artifact_Registry-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 
-<details>
-<summary>🧩 <b>Resto del stack</b> (clic para expandir)</summary>
-<br>
-
 **Lenguajes**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -398,8 +394,6 @@ Pipeline de 5 etapas (preprocesamiento → EDA → modelado → interpretabilida
 ![Microsoft Project](https://img.shields.io/badge/Microsoft_Project-31752F?style=for-the-badge)
 ![Monday](https://img.shields.io/badge/Monday-FF3D57?style=for-the-badge&logo=mondaydotcom&logoColor=white)
 ![Bizagi](https://img.shields.io/badge/Bizagi-1F3F78?style=for-the-badge)
-
-</details>
 
 ---
 
